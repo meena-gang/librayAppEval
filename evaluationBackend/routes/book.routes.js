@@ -60,7 +60,7 @@ bookRouter.patch('/update/:bookId', auth,async(req,res) => {
     try{
         const book = await BookModel.findOne({_id:bookId, userId});
         if(book){
-            await BookModel.updateOne({title,price,author})
+            await book.updateOne({title,price,author})
             res.status(200).send("Book updated");
         }else{
             res.status(404).send("Book not found");
